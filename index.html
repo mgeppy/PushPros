@@ -1,4 +1,9 @@
-Hello to the Lead Software Engineer, I have not used github for projects before this and apoligize for any inconsistencies. My expereince with JOSN and AJAX is not extensive, I was unable to get this code fully functioning. My logic is present and I believe I was close to the solution. But I am unaware of how to view the data in the original JSON file and couldn't find the answer online. This is an example of how I'm unfamiliar with aspects of the language but understand logic/sytnax. This project is a fair reflection of my abilities currently in these problems while the code does not work my comments explain the process and reasoning present. - Mike Gephart
+Hello to the Lead Software Engineer, I have not used github for projects before this and apoligize for any inconsistencies. 
+My expereince with JOSN and AJAX is not extensive, I was unable to get this code fully functioning. 
+My logic is present and I believe I was close to the solution.
+But I am unaware of how to view the data in the original JSON file and couldn't find the answer online.
+This is an example of how I'm unfamiliar with aspects of the language but understand logic/sytnax. 
+This project is a fair reflection of my abilities currently in these problems while the code does not work my comments explain the process and reasoning present. - Mike Gephart
 
 
 
@@ -37,7 +42,7 @@ function loadUsers(){     //calls request to server without refreshing page
   request.onload = () => {        //when JSON file is loaded run code below
     try {                         //trys to parse json file called beforehand
         const json = JSON.parse(request.responseText);   //makes variable json = to parsed JSON file data
-        populateUsers(json);    \\runs function populate users with json variable of parsed data 
+        populateUsers(json);    //runs function populate users with json variable of parsed data 
     } catch (e){  //throws error if request for onload fails
       console.warn("Couldn't load data");
     }
