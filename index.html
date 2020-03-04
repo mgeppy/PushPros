@@ -1,0 +1,71 @@
+Hello to the Lead Software Engineer, I have not used github for projects before this and apoligize for any inconsistencies. My expereince with JOSN and AJAX is not extensive, I was unable to get this code fully functioning. My logic is present and I believe I was close to the solution. But I am unaware of how to view the data in the original JSON file and couldn't find the answer online. This is an example of how I'm unfamiliar with aspects of the language but understand logic/sytnax. This project is a fair reflection of my abilities currently in these problems while the code does not work my comments explain the process and reasoning present. - Mike Gephart
+
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> //bootstrap reference
+
+
+
+
+  <h2 class="title" style="text-align: center;">PushPros Table</h2>  //title, inline css styles
+
+  <button style="margin-left: 70%; margin-bottom: 25px;" id="load_Table"> //button with ID that will call event listener function
+Populate Table
+</button>
+
+
+
+  <table id="user-table" class="table table-hover"> //table without content to be populated by JSON file when button is clicked
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Url</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+  const userBody = document.querySelector("#user-table > tbody"); //establishes new const from the table body element of the user table
+
+function loadUsers(){     //calls request to server without refreshing page
+  const request = new XMLHttpRequest();   
+
+  request.open("get", "http://aimtell.com/files/sites.json");   //requests specific json file  
+  request.onload = () => {        //when JSON file is loaded run code below
+    try {                         //trys to parse json file called beforehand
+        const json = JSON.parse(request.responseText);   //makes variable json = to parsed JSON file data
+        populateUsers(json);    \\runs function populate users with json variable of parsed data 
+    } catch (e){  //throws error if request for onload fails
+      console.warn("Couldn't load data");
+    }
+
+  };
+  request.send();
+}
+
+
+
+function populateUsers (json){      //establishes populate users function using json as argument
+
+
+  json.forEach((row) => {          
+    const tr = document.createElement("tr"); //for every row in the data a row will be created in the table
+
+
+    row.forEach((cell){             //nested for each function that creates a new cell for each cell presen in data 
+      const td = document.createElement("td");
+      td.textContent = cell;    //makes new cells text content match the text that appears in that cell in data
+      tr.appendChild(td);   //appends newly data filled cells to original table
+    });
+
+rankingsBody.appendChild(tr); //takes rows created by foreach row and appends them to original table
+
+  });
+}
+
+
+document.getElementById("load_Table").addEventListener("click", () => {loadUsers(); });  //when button is clicked the loadUsers function is run.
+  </script>
